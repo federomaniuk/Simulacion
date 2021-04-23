@@ -206,7 +206,8 @@ def prueba_medias(lista, titulo):
     var_co = (2 * cantidad_menores * cantidad_mayores * (2 * cantidad_menores * cantidad_mayores - n)) / (n ** 2 * (n - 1))
     z0 = (cantidad_corridas - u_co) / math.sqrt(var_co)
 
-    print(z0)
+    print('Z0 es: ',z0)
+    print('En ',titulo)
 
     z_alfa = 1.96
 
