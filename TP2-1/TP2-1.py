@@ -265,10 +265,13 @@ def prueba_autocorrelacion(lista):
     print(comparados)
     return Z
 
-def autocorrelacion(lista, titulo):
+def autocorrelacion(lista, titulo, generador):
     conjunto_arreglos = []
-    for k in range (0, 10):
+    print('LA LISTA', lista)
+    for k in range(0, 10):
+        lista = generador
         conjunto_arreglos.append(prueba_autocorrelacion(lista))
+    print('EL CONJUNTO', conjunto_arreglos)
     grafica_autocorrelacion(conjunto_arreglos, titulo)
 
 def grafica_barras(lista, sumRes, chi, titulo):
@@ -320,10 +323,12 @@ def grafica_rachas(lista, z, prob, titulo):
     
 
 def grafica_medias(frecuencia_relativa_cantidad_cambios, titulo):
+    fig = plot.figure()
     plot.title('Frecuencia relativa de cambio. ' + titulo)
     plot.bar(range(0, len(frecuencia_relativa_cantidad_cambios)), (frecuencia_relativa_cantidad_cambios))
     plot.xlabel("cantidad de números en la corrida")
-    plot.ylabel("Frecuencia relativa de cambio")
+    plot.ylabel("Frecuencia relativa de cambios")
+
     plot.savefig("grafica_medias_"+str(titulo)+".svg")
     
 
@@ -339,18 +344,31 @@ def main():
   chi_cuadrado(lista_python, 'Python generator')
   prueba_medias(lista_python, 'Python generator')
   prueba_rachas(lista_python, 'Python generator')
-  autocorrelacion(lista_python, 'Python generator')
+  #autocorrelacion
+  conjunto_arreglos = []
+  for k in range(0, 10):
+      lista_python = python_generator()
+      conjunto_arreglos.append(prueba_autocorrelacion(lista_python))
+  grafica_autocorrelacion(conjunto_arreglos, 'Python generator')
 
   #### GCL
   chi_cuadrado(lista_GCL, 'GCL')
   prueba_medias(lista_GCL, 'GCL')
   prueba_rachas(lista_GCL, 'GCL')
-  autocorrelacion(lista_GCL, 'GCL')
+  conjunto_arreglos = []
+  for k in range(0, 10):
+      lista_GCL = generador_congruencial_lineal(k)
+      conjunto_arreglos.append(prueba_autocorrelacion(lista_GCL))
+  grafica_autocorrelacion(conjunto_arreglos, 'GCL')
 
   #### RANDOM.ORG
   chi_cuadrado(lista_random_org, 'Random.org')
   prueba_medias(lista_random_org, 'Random.org')
   prueba_rachas(lista_random_org, 'Random.org')
-  autocorrelacion(lista_random_org, 'Random.org')
+  conjunto_arreglos = []
+  for k in range(0, 10):
+      lista_random_org = random_org_generator(k)
+      conjunto_arreglos.append(prueba_autocorrelacion(lista_random_org))
+  grafica_autocorrelacion(conjunto_arreglos, 'Random.org')
 if __name__ == "__main__":
     main()
