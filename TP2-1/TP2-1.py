@@ -265,15 +265,6 @@ def prueba_autocorrelacion(lista):
     print(comparados)
     return Z
 
-def autocorrelacion(lista, titulo, generador):
-    conjunto_arreglos = []
-    print('LA LISTA', lista)
-    for k in range(0, 10):
-        lista = generador
-        conjunto_arreglos.append(prueba_autocorrelacion(lista))
-    print('EL CONJUNTO', conjunto_arreglos)
-    grafica_autocorrelacion(conjunto_arreglos, titulo)
-
 def grafica_barras(lista, sumRes, chi, titulo):
     labels = ['0.0 - 0.1', '0.1 - 0.2', '0.2 - 0.3', '0.3 - 0.4', '0.4 - 0.5',
               '0.5 - 0.6', '0.6 - 0.7', '0.7 - 0.8', '0.8 - 0.9', '0.9 - 1.0']
@@ -355,6 +346,7 @@ def main():
   chi_cuadrado(lista_GCL, 'GCL')
   prueba_medias(lista_GCL, 'GCL')
   prueba_rachas(lista_GCL, 'GCL')
+  #autocorrelacion
   conjunto_arreglos = []
   for k in range(0, 10):
       lista_GCL = generador_congruencial_lineal(k)
@@ -365,6 +357,7 @@ def main():
   chi_cuadrado(lista_random_org, 'Random.org')
   prueba_medias(lista_random_org, 'Random.org')
   prueba_rachas(lista_random_org, 'Random.org')
+  #autocorrelacion
   conjunto_arreglos = []
   for k in range(0, 10):
       lista_random_org = random_org_generator(k)
