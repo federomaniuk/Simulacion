@@ -274,7 +274,7 @@ def autocorrelacion(lista, titulo):
 def grafica_barras(lista, sumRes, chi, titulo):
     labels = ['0.0 - 0.1', '0.1 - 0.2', '0.2 - 0.3', '0.3 - 0.4', '0.4 - 0.5',
               '0.5 - 0.6', '0.6 - 0.7', '0.7 - 0.8', '0.8 - 0.9', '0.9 - 1.0']
-    width = 0.35.
+    width = 0.35
     fig, ax = plot.subplots()
     val = 50/10
     plot.axhline(val, color='black', ls="dotted", xmax=len(lista))
@@ -324,8 +324,6 @@ def grafica_medias(frecuencia_relativa_cantidad_cambios, titulo):
     plot.bar(range(0, len(frecuencia_relativa_cantidad_cambios)), (frecuencia_relativa_cantidad_cambios))
     plot.xlabel("cantidad de números en la corrida")
     plot.ylabel("Frecuencia relativa de cambio")
-    plot.ylim(0, 1)
-    plot.xlim(0, 15)
     plot.savefig("grafica_medias_"+str(titulo)+".svg")
     
 
